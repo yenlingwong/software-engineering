@@ -1,0 +1,51 @@
+{%extends 'base.html'%} {%block content%}
+<link rel="stylesheet" href="{{url_for('static', filename='login.css')}}" /> 
+<div class="main">
+    <div class="row">
+        <div class="col2">
+            <centre>
+                <h2>Account Information</h1> <br>
+            </centre>
+            Name: {{current_user.name}} <br>
+            Email: {{current_user.email}} <br>
+            Phone: {{current_user.phone}} <br>
+            Address: {{current_user.address}} <br>
+            City: {{current_user.city}} <br>
+
+            <centre>
+                <h2>Update Your Account</h1>
+            </centre>
+
+            <div class="inputs">
+                <form action="" method="POST">
+                    {{form.hidden_tag()}} 
+                    {{form.name(placeholder="Name")}} 
+                    {{form.email(placeholder="Email")}} 
+                    {%if form.email.errors%} <br>
+                        <div class="error">
+                            {%for error in form.email.errors%} 
+                                {{error}} 
+                            {%endfor%}
+                        </div><br>
+                    {%endif%}
+                    {{form.address(placeholder="Address")}} 
+                    {{form.city(placeholder="City")}}
+                    {{form.phone(placeholder="Phone No.")}}
+                    {%if form.phone.errors%} <br>
+                        <div class="error">
+                            {%for error in form.number.errors%} 
+                                {{error}} 
+                            {%endfor%}
+                        </div><br>
+                    {%endif%} 
+
+                    <br>
+ 
+                    {{form.submit}}
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+{%endblock%}

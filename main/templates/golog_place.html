@@ -1,0 +1,65 @@
+{%extends 'base.html'%}{%block content%}
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+
+<div class="row">
+    
+    <div class="col2">
+        
+        <button id="button1" onclick="generateQR()"> Generate QRcode </button>
+        <div class="qr-code"></div>
+    
+            <script>
+                function generateQR(){
+        
+                const currentURL = window.location.href;
+        
+                document.querySelector(".qr-code").style = "";
+        
+                var qrcode = new QRCode(document.querySelector(".qr-code"), {
+                    text: `${currentURL}`,
+                    width: 180,
+                    height: 180,
+                    colorDark: "#000000",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H,
+                });
+        
+                let download = document.createElement("button");
+                document.querySelector(".qr-code").appendChild(download);
+        
+                let download_link = document.createElement("a");
+                download_link.setAttribute("download", "qr_code_linq.png");
+                download_link.innerText = "Download";
+        
+                download.appendChild(download_link);
+        
+                if (
+                    document.querySelector(".qr-code img").getAttribute("src") ==
+                    null
+                ) {
+                    setTimeout(() => {
+                        download_link.setAttribute(
+                            "href",
+                            `${document.querySelector("canvas").toDataURL()}`,
+                        );
+                    }, 300);
+                } else {
+                    setTimeout(() => {
+                        download_link.setAttribute(
+                            "href",
+                            `${document
+                                .querySelector(".qr-code img")
+                                .getAttribute("src")}`,
+                        );
+                    }, 300);
+                }
+        
+                document.getElementById("button1").style.display = "none";
+            }
+        
+            </script>
+        </div>
+        
+</div>{%endblock%}

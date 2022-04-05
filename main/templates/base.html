@@ -1,0 +1,90 @@
+<html>
+
+<head>
+    <title>Corona Archive- {%block title%}{%endblock%}</title>
+
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" /> {%block head%}{%endblock%}
+</head>
+
+<body background="https://www.pngall.com/wp-content/uploads/4/Coronavirus-Germs-PNG-File.png" width="25%">
+
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <marquee scrolldelay="10">
+                    <img src="{{url_for('static', filename='Images/logo.png')}}" width="100px" />
+                </marquee>
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        {%if current_user.is_authenticated%}
+                            <a href="{{url_for('logout')}}">Log Out</a> <br>
+                            {%if session['userType'] == 'visitor'%}
+                                <a href="{{url_for('visitor_account')}}">Account</a> <br>
+                                <a href="{{url_for('log_vis')}}">Home</a>
+                            {%endif%}
+                            {%if session['userType'] == 'place'%}
+                                <a href="{{url_for('place_account')}}">Account</a> <br>
+                                <a href="{{url_for('log_place')}}">Home</a>
+                            {%endif%}
+                        {%else%}
+                            <a href="{{url_for('index')}}">Home</a>
+                        
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">LogIn</button>
+                            <b>
+              <div class="dropdown-content">
+                <a href="{{url_for('log_vis')}}">Visitor</a>
+                <a href="{{url_for('log_place')}}">Place</a>
+                <a href="{{url_for('log_hospital')}}">Hospital</a>
+                <a href="{{url_for('log_agent')}}">Agent</a>
+              </div>
+            </b>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Register</button>
+                            <b>
+              <div class="dropdown-content">
+                <a href="{{url_for('reg_visitor')}}">Visitor</a>
+                <a href="{{url_for('reg_place')}}">Place</a>
+                <a href="{{url_for('reg_hospital')}}">Hospital</a>
+              </div>
+            </b>
+                        </div>
+                        {%endif%}
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %} 
+        {% if messages %} 
+            {% for category, message in messages %}
+                <div class="alert {{ category }}"> 
+                    {{ message|capitalize }} 
+                </div>
+            {% endfor %} 
+        {% endif %} 
+    {% endwith %} 
+    
+    {%block content%} 
+    {%endblock%}
+    <!-- <form and all></form> -->
+
+    <div class="footer">
+        <div class="text_foot">
+            &copy; CopyRight| Corona Archive &nbsp; &nbsp; &nbsp;
+            <div class="here">Imprint
+                <span class="hide">
+                    This website was created as a project of Software Engineering Module of Jacobs University Bremen. This website in general can be considered as Covid Management System. This Project was created on sprint basis. <br> <br> <u> Sprint01 </u> By:<br>1.
+                    Nimesh Acharya <br> 2. Sinem Bilge G&uuml;ler...
+                </span>
+            </div>
+        </div>
+    </div>
+</body>

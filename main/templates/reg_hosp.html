@@ -1,0 +1,19 @@
+{%extends 'base.html'%} {%block title%}Registration{%endblock%} {%block head%}
+<link rel="stylesheet" href="{{url_for('static', filename='login.css')}}" /> {%endblock%} {%block content%}
+<div class="main">
+    <centre>
+        <h1>Hospital Signup</h1>
+    </centre>
+    <div class="brand-title">
+        <img src="{{url_for('static', filename='Images/logo.png')}}" width="100px" />
+    </div>
+    <div class="inputs">
+        <form action="" method="POST">
+            {{form.hidden_tag()}} {{form.reg(placeholder="Registration Number")}}{%if form.reg.errors%} <br>
+            <div class="error"> {%for error in form.reg.errors%} {{error}} {%endfor%}</div><br>{%endif%} {{form.email(placeholder="Email")}}{%if form.email.errors%} <br>
+            <div class="error">{%for error in form.email.errors%} {{error}} {%endfor%}</div><br>{%endif%} {{form.name(placeholder="Hospital Name")}} {{form.address(placeholder="Address")}} {{form.city(placeholder="City")}} {{form.submit}}
+        </form>
+    </div>
+    <centre>Your request will be sent to Agent, and you will get credentials</centre>
+</div>
+{%endblock%}

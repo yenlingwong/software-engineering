@@ -1,0 +1,71 @@
+{%extends 'base.html'%} 
+{%block title%}Registration{%endblock%} 
+
+{%block head%}
+    <link rel="stylesheet" href="{{url_for('static', filename='login.css')}}" /> 
+{%endblock%} 
+{%block content%}
+<div class="main">
+    <centre>
+        <h1>Visitor Signup</h1>
+    </centre>
+    <div class="brand-title">
+        <img src="{{url_for('static', filename='Images/logo.png')}}" width="100px" />
+    </div>
+    <div class="inputs">
+        <form action="" method="POST">
+            {{form.hidden_tag()}} 
+            {{form.name(placeholder="Name")}} 
+            {{form.email(placeholder="Email")}} 
+            {%if form.email.errors%} <br>
+                <div class="error">
+                    {%for error in form.email.errors%} 
+                        {{error}} 
+                    {%endfor%}
+                </div><br>
+            {%endif%}
+            {{form.password(placeholder="Password")}}
+            {%if form.password.errors%} <br>
+                <div class="error">
+                    {%for error in form.password.errors%} 
+                        {{error}} 
+                    {%endfor%}
+                </div><br>
+            {%endif%}
+            {{form.confirm_password(placeholder="Confirm Password")}}
+            {%if form.confirm_password.errors%} <br>
+                <div class="error">
+                    {%for error in form.confirm_password.errors%} 
+                        {{error}} 
+                    {%endfor%}
+                </div><br>
+            {%endif%} 
+            {{form.address(placeholder="Address")}} 
+            {{form.city(placeholder="City")}}
+            {{form.number(placeholder="Phone No.")}}
+            {%if form.number.errors%} <br>
+                <div class="error">
+                    {%for error in form.number.errors%} 
+                        {{error}} 
+                    {%endfor%}
+                </div><br>
+            {%endif%} 
+            {{form.device_id(placeholder="Device ID")}}
+            {%if form.device_id.errors%} <br>
+                <div class="error">
+                    {%for error in form.device_id.errors%} 
+                        {{error}} 
+                    {%endfor%}
+                </div><br>
+            {%endif%} 
+            
+            {{form.submit}}
+        </form>
+    </div>
+    <div>
+        <small>
+            Already Have An Account? <a href="{{url_for('log_vis')}}">Sign In</a>
+        </small>
+    </div>
+</div>
+{%endblock%}

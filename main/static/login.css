@@ -1,0 +1,75 @@
+.main {
+    position: relative;
+    width: 350px;
+    height: fit-content;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #ecf0f3;
+    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+    margin: auto;
+    margin-top: 2%;
+}
+
+.brand-title {
+    margin: 5px;
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: #1DA1F2;
+}
+
+.inputs {
+    text-align: left;
+    margin-top: 30px;
+}
+
+.box,
+button {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+input::placeholder {
+    color: gray;
+}
+
+input {
+    background: #ecf0f3;
+    padding: 10px;
+    padding-left: 20px;
+    height: 50px;
+    font-size: 14px;
+    border-radius: 50px;
+    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
+
+.alert.success {
+    color: green;
+    width: 33%;
+    margin-left: 33%;
+    margin-right: 33%;
+}
+
+.alert.error {
+    width: 33%;
+    margin-left: 33%;
+    margin-right: 33%;
+}
+
+.error {
+    color: red;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.checkbox {
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background-color: #eee;
+}

@@ -1,0 +1,58 @@
+{%extends 'base.html'%} {%block content%}
+<div class="col2">
+    <form action="">
+        <button>Select Hospital(Dropdown list and search bar)</button><br> Accept
+        <br>
+        <input type="radio"><br> Reject
+        <br><input type="radio"><br>
+        <input type="submit">
+    </form>
+</div>
+
+
+<h1>Registered Visitors</h1>
+<div class="col2">
+    <table class="table">
+    <tr> <th>Name</th> <th>Email</th> <th>Address</th> <th>City</th> <th>Phone number</th> <th>Infection Status</th></tr>
+    {% for visitor in visitor_status%}
+            <tr><td> {{visitor.name}} </td>
+            <td> {{visitor.email}} </td>
+            <td> {{visitor.address}} </td>
+            <td> {{visitor.city}} </td>
+            <td> {{visitor.phone}} </td>
+            <td> {%if visitor.is_infected %} Yes {%else%} No {%endif%} </td></tr>
+    {%endfor%}
+    </table>
+</div>
+
+
+<h1>Registered Hospital</h1>
+<div class="col2">
+    <table class="table">
+    <tr> <th>Name</th> <th>Email</th> <th>Address</th> <th>City</th> <th>Phone number</th> <th>Approval Status</th></tr>
+    {% for hospital in hospital_status%}
+            <tr><td> {{hospital.name}} </td>
+            <td> {{hospital.email}} </td>
+            <td> {{hospital.address}} </td>
+            <td> {{hospital.city}} </td>
+            <td> {{hospital.phone}} </td>
+            <td> {%if hospital.is_approved %} Approved {%else%} Pending {%endif%} </td></tr>
+    {%endfor%}
+    </table>
+</div>
+
+<h1>Registered Places</h1>
+<div class="col2">
+    <table class="table">
+    <tr> <th>Name</th> <th>Email</th> <th>Address</th> <th>City</th> <th>Phone number</th></tr>
+    {% for place in places_status%}
+            <tr><td> {{place.name}} </td>
+            <td> {{place.email}} </td>
+            <td> {{place.address}} </td>
+            <td> {{place.city}} </td>
+            <td> {{place.phone}} </td>
+    {%endfor%}
+    </table>
+</div>
+
+{%endblock%}

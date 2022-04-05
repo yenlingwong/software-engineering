@@ -1,0 +1,16 @@
+{%extends 'base.html'%} {%block title%}LogIn{%endblock%} {%block head%}
+<link rel="stylesheet" href="{{url_for('static', filename='login.css')}}" /> {%endblock%} {%block content%}
+<div class="main">
+    <centre>
+        <h1>Hospital LogIn</h1>
+    </centre>
+    <div class="brand-title">
+        <img src="{{url_for('static', filename='Images/logo.png')}}" width="100px" />
+    </div>
+    <div class="inputs">
+        <form action="" method="POST">
+            {{form.hidden_tag()}} {{form.email(placeholder="Email or Phone")}} {{form.password(placeholder="Password")}} {{form.submit}}
+        </form>
+    </div>
+</div>
+{%endblock%}

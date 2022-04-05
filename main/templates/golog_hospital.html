@@ -1,0 +1,25 @@
+{%extends 'base.html'%} {%block content%}
+<form action="">
+    <div class="row">
+        <div class="col2">
+            <button>Select Patient(Dropdown list and search bar)</button>
+        </div>
+        <div class="col2">
+            Infected <br>
+            <input type="radio"><br> Not-Infected
+            <br><input type="radio">
+        </div>
+    </div>
+    <input type="submit">
+</form>
+
+    <table class="table">
+        <tr> <th>Name</th> <th>Email</th> <th>Address</th> <th>City</th> <th>Phone number</th> </tr>
+        {% for item in Visitors %}
+        <tr><td> {{item.name}} </td>
+        <td> {{item.email}} </td>
+        <td> {{item.address}} </td>
+        <td> {{item.city}} </td>
+        <td> {{item.phone}} </td></tr>
+        {% endfor %}
+{%endblock%}

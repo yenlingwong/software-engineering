@@ -1,0 +1,73 @@
+{%extends 'base.html'%} {%block content%}
+<link rel="stylesheet" href="{{url_for('static', filename='login.css')}}" /> 
+<div class="main">
+    <div class="row">
+        <div class="col2">
+            <centre>
+                <h2>Account Information</h1> <br>
+            </centre>
+            Name: {{current_user.name}} <br>
+            Email: {{current_user.email}} <br>
+            Device ID: {{current_user.device_id}} <br>
+            Phone: {{current_user.phone}} <br>
+            Address: {{current_user.address}} <br>
+            City: {{current_user.city}} <br>
+            Image File: {{current_user.image_file}}
+            
+            <img src="static/Images/{{current_user.image_file}}" alt="Profile Picture">
+
+            <centre>
+                <h2>Update Your Account</h1>
+            </centre>
+
+            <div class="inputs">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {{form.hidden_tag()}} 
+                    {{form.name(placeholder="Name")}} 
+                    {{form.email(placeholder="Email")}} 
+                    {%if form.email.errors%} <br>
+                        <div class="error">
+                            {%for error in form.email.errors%} 
+                                {{error}} 
+                            {%endfor%}
+                        </div><br>
+                    {%endif%}
+                    {{form.address(placeholder="Address")}} 
+                    {{form.city(placeholder="City")}}
+                    {{form.phone(placeholder="Phone No.")}}
+                    {%if form.phone.errors%} <br>
+                        <div class="error">
+                            {%for error in form.number.errors%} 
+                                {{error}} 
+                            {%endfor%}
+                        </div><br>
+                    {%endif%} 
+                    {{form.device_id(placeholder="Device ID")}}
+                    {%if form.device_id.errors%} <br>
+                        <div class="error">
+                            {%for error in form.device_id.errors%} 
+                                {{error}} 
+                            {%endfor%}
+                        </div><br>
+                    {%endif%} 
+                    <br>
+                    {{form.image_file(placeholder="Profile Image")}}
+                    {%if form.image_file.errors%} <br>
+                    <div class="error">
+                        {%for error in form.image_file.errors%} 
+                            {{error}} 
+                        {%endfor%}
+                    </div><br>
+                    {%endif%} 
+ 
+                    {{form.submit}}
+                </form>
+            </div>
+
+        </div>
+        <div class="col2">
+        
+        </div>
+    </div>
+</div>
+{%endblock%}
